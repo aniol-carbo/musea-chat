@@ -32,6 +32,12 @@ io.on('connection', function(socket){
     console.log("Message " + msg['message']);
     io.emit('chat message', msg);
   });
+
+  socket.on('join room', function(room){
+    console.log("Room " + room);
+    io.join(room)
+    io.emit('join room', room);
+  });
 });
 
 http.listen(app.get('port'), function() {
